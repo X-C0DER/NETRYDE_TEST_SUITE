@@ -43,5 +43,6 @@ class TestTCE2E002LOGIN1():
     self.driver.find_element(By.ID, "3").send_keys("M!k3th3fr34k")
     time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, "button:nth-child(4)").click()
+    time.sleep(10)
     assert self.driver.title == "NetRyde"
   

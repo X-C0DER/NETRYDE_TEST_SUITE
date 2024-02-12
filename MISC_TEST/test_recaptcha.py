@@ -19,7 +19,7 @@ class TestTC2001TESTCAPTCHA():
     self.driver.quit()
   
   def test_tC2001TESTCAPTCHA(self):
-    self.driver.get("https://www.netryde.com/")
+    self.driver.get("https://dev-np.netryde.com/")
     self.driver.set_window_size(1218, 727)
     self.driver.find_element(By.ID, "Log inTextArea").click()
     self.driver.find_element(By.LINK_TEXT, "Login as a Customer").click()
@@ -33,5 +33,5 @@ class TestTC2001TESTCAPTCHA():
     self.driver.find_element(By.CSS_SELECTOR, "button:nth-child(4)").click()
     time.sleep(3)
     assert self.driver.find_element(By.CSS_SELECTOR, "p:nth-child(3)").text == "captcha verification process failed"
-    time.sleep(6)
+
   
