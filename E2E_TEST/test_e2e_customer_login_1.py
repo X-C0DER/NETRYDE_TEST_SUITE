@@ -19,7 +19,7 @@ class TestTCE2E002LOGIN1():
     self.driver.quit()
   
   def test_tCE2E002LOGIN1(self):
-    self.driver.get("https://www.netryde.com/")
+    self.driver.get("https://dev-np.netryde.com/")
     self.driver.set_window_size(1218, 727)
     self.driver.find_element(By.CSS_SELECTOR, ".point-a").click()
     self.driver.execute_script("window.scrollTo(0,0)")
@@ -41,13 +41,7 @@ class TestTCE2E002LOGIN1():
     self.driver.find_element(By.ID, "3").click()
     self.driver.find_element(By.ID, "3").click()
     self.driver.find_element(By.ID, "3").send_keys("M!k3th3fr34k")
-    # self.driver.switch_to.frame(2)
-    # self.driver.find_element(By.ID, "checkbox").click()
-    # self.driver.switch_to.default_content()
-    # self.driver.switch_to.frame(1)
-    # time.sleep(15)
-    # self.driver.switch_to.default_content()
-    # time.sleep(3)
+    time.sleep(3)
     self.driver.find_element(By.CSS_SELECTOR, "button:nth-child(4)").click()
     assert self.driver.title == "NetRyde"
   
