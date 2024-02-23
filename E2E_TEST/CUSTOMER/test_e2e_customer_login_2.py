@@ -30,13 +30,16 @@ def logged_in_browser(browser):
     yield browser
 
 class TestE2ECustomerLogin:
-    def test_e2e_customer_login(self, logged_in_browser):
+    def test_login(self, logged_in_browser):
         browser = logged_in_browser
         browser.find_element(By.CSS_SELECTOR, ".\\_nav-links_1xe3h_48 h1").click()
         time.sleep(2)
         assert browser.find_element(By.CSS_SELECTOR, ".\\_user-menu-logout-btn_1xe3h_219").text == "Logout"
 
-    def test_page(self, logged_in_browser):
+    def test_logout(self, logged_in_browser):
         browser = logged_in_browser
-        assert 'netryde' in browser.title.lower()
+        logout_btn=browser.find_element(By.CSS_SELECTOR, ".\\_user-menu-logout-btn_1xe3h_219")
+        logout_btn.click()
+        time.sleep(3)
+        assert 'NetRyde' in browser.title
 
