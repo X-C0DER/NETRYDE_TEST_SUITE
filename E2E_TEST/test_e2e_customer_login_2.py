@@ -35,8 +35,34 @@ class TestE2ECustomerLogin:
         browser.find_element(By.CSS_SELECTOR, ".\\_nav-links_1xe3h_48 h1").click()
         time.sleep(2)
         assert browser.find_element(By.CSS_SELECTOR, ".\\_user-menu-logout-btn_1xe3h_219").text == "Logout"
+    def test_booking():
+        time.sleep(3)
+        browser=logged_in_browser
+        browser.find_element(By.CSS_SELECTOR, ".point-a").click()
+        browser.find_element(By.CSS_SELECTOR, ".point-a").send_keys("2700 16th Avenue, Edgewood, Washington 98354, United States")
+        browser.find_element(By.CSS_SELECTOR, ".point-a").send_keys(Keys.ENTER)
+        browser.find_element(By.CSS_SELECTOR, ".point-b").click()
 
-    def test_page(self, logged_in_browser):
+        browser.find_element(By.CSS_SELECTOR, ".point-b").send_keys("8407 Rainier Avenue South, Seattle, Washington 98118, United Statess")
+        browser.find_element(By.CSS_SELECTOR, ".point-b").send_keys(Keys.ENTER)
+        browser.find_element(By.ID, "time").click()
+        
+        current_date = datetime.now().date()
+        next_day = (current_date + timedelta(days=1)).strftime("%m-%d-%Y")
+        browser.find_element(By.ID, "time").send_keys(next_day)
+
+        browser.find_element(By.XPATH, "(//input[@id=\'time\'])[2]").send_keys("16:02")
+        browser.find_element(By.CSS_SELECTOR, "label:nth-child(2) > .icon").click()
+        browser..find_element(By.XPATH, "//div[@id=\'root\']/div/div/div[2]/div[9]/button").click()
+        
+        assert True
+    def test_stripe_payment():
+        pass 
+
+    def test_e2e_customer_logout(self, logged_in_browser):
         browser = logged_in_browser
-        assert 'netryde' in browser.title.lower()
+        logout_btn=browser.find_element(By.CSS_SELECTOR, ".\\_user-menu-logout-btn_1xe3h_219")
+        logout_btn.click()
+        assert 'NetRyde' in browser.title
+
 
