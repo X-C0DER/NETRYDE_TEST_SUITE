@@ -46,25 +46,22 @@ class TestE2ECustomerLogin:
         browser.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
 
         browser.find_element(By.CSS_SELECTOR, ".point-b").click()
-        browser.find_element(By.CSS_SELECTOR, ".point-b").send_keys("8407 Rainier Avenue South, Seattle")
+        browser.find_element(By.CSS_SELECTOR, ".point-b").send_keys("8407 Rainier Avenue South, Seattle,")
         time.sleep(5)
         browser.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
         time.sleep(2)
         browser.find_element(By.ID, "Get PriceTextArea").click()
-        time.sleep(5)
+        time.sleep(3)
         element = browser.find_element(By.TAG_NAME, "button")
         element.click()
-        time.sleep(5)
+        time.sleep(3)
 
         assert 'https://dev-np.netryde.com/dashboard/map' in browser.current_url
 
 
     def test_booking(self,logged_in_browser):
-        time.sleep(5)
-        browser=logged_in_browser
-
-        #browser.find_element(By.CSS_SELECTOR, ".point-b").send_keys(Keys.ENTER)
         
+        browser=logged_in_browser
 
         # browser.find_element(By.CSS_SELECTOR, ".point-a").click()
         # browser.find_element(By.CSS_SELECTOR, ".point-a").clear()
@@ -86,21 +83,21 @@ class TestE2ECustomerLogin:
         current_time = datetime.now()
         next_hour_time = current_time + timedelta(hours=6)
         six_hour = next_hour_time.strftime("%H-%M")
-        
         date_input=browser.find_element(By.XPATH, "//div[@id='root']/div/div/div[2]/div[9]/div/input")
         time_input=browser.find_element(By.XPATH, "(//input[@id=\'time\'])[2]")
 
        
         date_input.send_keys(next_day)
+        time.sleep(2)
         time_input.send_keys(six_hour)
 
         time.sleep(3)
-        browser.execute_script("window.scrollTo(0, 0);")
+
         browser.find_element(By.CSS_SELECTOR, "label:nth-child(10)").click()
         browser.find_element(By.XPATH, "//div[@id='root']/div/div/div[2]/div[9]/button").click()
         
         
-        time.sleep(10)
+        time.sleep(5)
         assert 'https://checkout.stripe.com' in browser.current_url
 
     def test_stripe_checkout(self,logged_in_browser):
@@ -122,16 +119,23 @@ class TestE2ECustomerLogin:
         browser.find_element(By.CSS_SELECTOR, ".\\_booking-status-container_5f60k_426").click()
         time.sleep(5)
         assert browser.find_element(By.CSS_SELECTOR, ".\\_booking-status-item_5f60k_437:nth-child(1) > p").text == "Trip Booked"
+        browser.execute_script("window.scrollTo(0, 250);")
+        time.sleep(3)
         browser.find_element(By.LINK_TEXT, "Book another trip").click()
+
+    def test_booking2(self,logged_in_browser):
+        pass
 
 
     def test_e2e_customer_logout(self, logged_in_browser):
         browser = logged_in_browser
-        #browser.get("https://dev-np.netryde.com/")
+        browser.execute_script("window.scrollTo(0, -100);")
         time.sleep(3)
         browser.find_element(By.CSS_SELECTOR, ".\\_nav-links_1xe3h_48 h1").click()
+        time.sleep(3)
         logout_btn=browser.find_element(By.CSS_SELECTOR, ".\\_user-menu-logout-btn_1xe3h_219")
         logout_btn.click()
+        time.sleep(3)
         assert 'NetRyde' in browser.title
 
 
