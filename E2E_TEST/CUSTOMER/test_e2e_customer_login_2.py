@@ -86,6 +86,7 @@ class TestE2ECustomerLogin:
         current_time = datetime.now()
         next_hour_time = current_time + timedelta(hours=6)
         six_hour = next_hour_time.strftime("%H-%M")
+        
         date_input=browser.find_element(By.XPATH, "//div[@id='root']/div/div/div[2]/div[9]/div/input")
         time_input=browser.find_element(By.XPATH, "(//input[@id=\'time\'])[2]")
 
