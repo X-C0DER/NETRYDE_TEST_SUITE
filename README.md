@@ -9,9 +9,12 @@ Programming language - Python
 IDE - VsCode
 
 prerequisites
-python 3 and above
-a virtual enviroment to run the python codes
-selenium Webdriver
+
+    * python 3 and above
+
+    * a virtual enviroment to run the python codes
+
+    * selenium Webdriver
 
 Geting Started 
 
