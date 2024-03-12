@@ -25,6 +25,8 @@ Running Tests
 
 1 run the tests using "pytest" command
 
+
+Directory Structue
     
 ```
 NETRYDE_TEST_SUITE
@@ -54,5 +56,5 @@ NETRYDE_TEST_SUITE
     │   test_get_price.py
     │   test_recaptcha.py
     │   test_SHOW_PASSWORD.py
-     
+
 ```
