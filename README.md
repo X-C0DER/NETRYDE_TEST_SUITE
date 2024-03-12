@@ -1,8 +1,6 @@
-# NETRYDE_TEST_SUITE
+# NETRYDE TEST SUITE
 
-This is a test Suite for the Web App Netryde an online Ride Booking application all the test cases developed by the test team can be found here.
+This a Test Suite For Netryde Web Application.It Contains Happy and Negative Path Tests for the Three StakeHolders (Customer, Provider and admin). This Suite Is Designed Following the POM(Page Object Model) Architecture. 
 
-Team Members
-Michael Alem
-Tesfa Melaku 
-Hashim Tamam
+tesfa
+
