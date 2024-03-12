@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "username": "nrpt1@zprodev.com",
+      "password": "Test@123"
+    },
+    {
+      "username": "nrpt2@zprodev.com",
+      "password": "Test@123"
+    },
+    {
+      "username": "nrpt3@zprodev.com",
+      "password": "Test@123"
+    },
+    {
+      "username": "nrpt4@zprodev.com",
+      "password": "Test@123"
+    },
+    {
+      "username": "nrpt5@zprodev.com",
+      "password": "Test@123"
+    },
+    {
+      "username": "nrpt6@zprodev.com",
+      "password": "Test@123"
+    }
+  ]
+}
