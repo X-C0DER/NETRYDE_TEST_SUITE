@@ -20,15 +20,15 @@ prerequisites
 
 Geting Started 
 
-1 clone a repository 
-    git clone https://github.com/X-C0DER/NETRYDE_TEST_SUITE.git
-2 navigate to a project directory
-    cd NETRYDE_TEST_SUITE 
-    cd E2E_TEST  /  MISC_TEST
+    1 clone a repository 
+        git clone https://github.com/X-C0DER/NETRYDE_TEST_SUITE.git
+    2 navigate to a project directory
+        cd NETRYDE_TEST_SUITE 
+        cd E2E_TEST  /  MISC_TEST
 
 Running Tests
 
-1 run the tests using "pytest" command
+    run the tests using "pytest" command
 
 
 Directory Structue
