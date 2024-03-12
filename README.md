@@ -5,7 +5,9 @@ This a Test Suite For Netryde Web Application.It Contains Happy and Negative Pat
 Test Automatinon For NetRyde.com
 
 Automation testing tool - Selenium WebDriver API
+
 Programming language - Python
+
 IDE - VsCode
 
 prerequisites
