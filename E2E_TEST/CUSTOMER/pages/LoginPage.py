@@ -1,4 +1,4 @@
-from utils import *
+from .utils import *
 
 class LoginPage:
 	def __init__(self,driver):
