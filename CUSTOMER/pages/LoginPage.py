@@ -11,6 +11,10 @@ class LoginPage:
 		self.login_button=(By.CSS_SELECTOR, "button:nth-child(4)")
 
 	def login(self, email, password):
+		self.driver.get("https://dev-np.netryde.com/")
+		self.driver.maximize_window()
+		self.driver.find_element(By.ID, "Log inTextArea").click()
+		self.driver.find_element(By.LINK_TEXT, "Login as a Customer").click()
 		WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.email_input)).send_keys(email)
 		self.driver.find_element(*self.continue_button).click()
 		self.driver.find_element(*self.password_input).send_keys(password)
