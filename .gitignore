@@ -1,2 +1,2 @@
 *.pyc
-customer/tests/.env
+CUSTOMER/tests/.env
