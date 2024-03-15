@@ -1,4 +1,4 @@
-from utils import *
+from .utils import *
 
 class SignUpPage:
 	def __init__(self,driver):
