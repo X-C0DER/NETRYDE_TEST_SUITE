@@ -1,4 +1,4 @@
-from utils import * 
+from .utils import * 
 
 class HomePage:
 	def __init__(self,driver):

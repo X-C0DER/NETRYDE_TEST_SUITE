@@ -17,7 +17,7 @@ def date_and_time():
     next_day = (current_date + timedelta(days=1)).strftime("%m-%d-%Y")
     current_time = datetime.now()
     next_hour_time = current_time + timedelta(hours=6)
-    six_hour = next_hour_time.strftime("%I:%M %p")
+    six_hour = next_hour_time.strftime("%I:%M")
 
     return next_day,six_hour
 
