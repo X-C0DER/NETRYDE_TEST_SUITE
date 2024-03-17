@@ -1,2 +1,3 @@
 *.pyc
 CUSTOMER/tests/.env
+CUSTOMER/tests/TEST_DATA

@@ -48,12 +48,12 @@ class DashBoard:
 		pick_up_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_a))
 		pick_up_loc.send_keys(point_a)
 		pick_up_loc.send_keys(Keys.ENTER)
-		time.sleep(3)
-		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+		#time.sleep(3)
+		#self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
 
 		drop_off_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_b))
 		drop_off_loc.send_keys(point_b)
-		drop_off_loc.send_keys(Keys.ENTER)
+		#drop_off_loc.send_keys(Keys.ENTER)
 		time.sleep(5)
 		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
 		
@@ -71,7 +71,7 @@ class DashBoard:
 			pass
 		else:
 			self.multi_click("button:nth-child(4)",passengers-1)
-			time.sleep(5)
+			
 
 		if (baby_on_board==0):
 			pass
@@ -91,6 +91,7 @@ class DashBoard:
 		
 		
 		self.driver.find_element(*self.date_input).send_keys(pick_up_date)
+		time.sleep(2)
 		self.driver.find_element(*self.time_input).send_keys(pick_up_time)
 
 
