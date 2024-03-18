@@ -1,6 +1,8 @@
-from utils import *
+from .utils import *
 
-"""
+
+class DashBoard:
+	"""
     Class representing the dashboard functionality for booking a trip.
 
     Attributes:
@@ -21,14 +23,13 @@ from utils import *
         tip_10: Locator for the 10% tip option.
         no_tip: Locator for the 'No Tip' option.
         tip_another_amount: Locator for the 'Other Amount' tip option.
-        add_tip: Locator for the 'Add Tip' button.
+        add_tip: Locator forgit  the 'Add Tip' button.
         decrease_tip: Locator for the 'Decrease Tip' button.
         popular_cars: Locator for the 'Popular Cars' option.
         luxury_cars: Locator for the 'Luxury Cars' option.
         comfortable_cars: Locator for the 'Comfortable Cars' option.
         book_tip_button: Locator for the 'Book Trip' button.
     """
-class DashBoard:
 	def __init__(self,driver):
 		"""
         Initializes the Dashboard object with a WebDriver instance.
@@ -96,22 +97,26 @@ class DashBoard:
 				tip: Type of tip (default is "NO_TIP").
 				tip_amount: Amount of tip (default is 0).
 			"""
+			time.sleep(7)
 			
-			WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div:nth-child(1) > .car:nth-child(3) > label")))
-			
+			WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.popular_cars))	
 			
 		
 			pick_up_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_a))
-			pick_up_loc.send_keys(point_a)
-			pick_up_loc.send_keys(Keys.ENTER)
-			#time.sleep(3)
-			#self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+			#pick_up_loc.send_keys(point_a)
+			#pick_up_loc.send_keys(Keys.ENTER)
+			
+			#WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".suggestion:nth-child(1)"))).click()
+			
+			#self.driver.find_element(By.CSS_SELECTOR, "").click()
+			
 
 			drop_off_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_b))
-			drop_off_loc.send_keys(point_b)
-			#drop_off_loc.send_keys(Keys.ENTER)
-			time.sleep(5)
-			self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+			#drop_off_loc.send_keys(point_b)
+			
+			#WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".suggestion:nth-child(1)"))).click()
+			
+			
 			
 			
 			
@@ -146,7 +151,7 @@ class DashBoard:
 
 			
 			
-			self.driver.find_element(*self.date_input).send_keys(pick_up_date)
+			#self.driver.find_element(*self.date_input).send_keys(pick_up_date)
 			time.sleep(2)
 			self.driver.find_element(*self.time_input).send_keys(pick_up_time)
 

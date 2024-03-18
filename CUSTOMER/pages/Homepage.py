@@ -34,13 +34,25 @@ class HomePage:
             point_a: Pick-up location.
             point_b: Drop-off location.
         """
-		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".point-a"))).click()
-		driver.find_element(By.CSS_SELECTOR, ".point-a").send_keys("2700 16th Avenue, Edgewood,")
-		WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".suggestion:nth-child(1)"))).click()
-		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".point-b"))).click()
-		driver.find_element(By.CSS_SELECTOR, ".point-b").send_keys("8407 Rainier Avenue South, Seattle,")
-		WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".suggestion:nth-child(1)"))).click()
-		driver.find_element(By.ID, "Get PriceTextArea").click()
-		WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.TAG_NAME, "button"))).click()
-		#WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, ".address--input-box > p"))
+		self.driver.get("https://dev-np.netryde.com")
+		self.driver.maximize_window()
+		
+    
+		
+		self.driver.find_element(By.CSS_SELECTOR, ".point-a").click()
+		self.driver.find_element(By.CSS_SELECTOR, ".point-a").send_keys(point_a)
+		time.sleep(2)
+		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+
+		self.driver.find_element(By.CSS_SELECTOR, ".point-b").click()
+		self.driver.find_element(By.CSS_SELECTOR, ".point-b").send_keys(point_b)
+		time.sleep(5)
+		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+		time.sleep(2)
+		self.driver.find_element(By.ID, "Get PriceTextArea").click()
+		time.sleep(3)
+		element = self.driver.find_element(By.XPATH, "//div[@id='root']/div/div/div/div/div/div[2]/div/div/div/div[2]/button")
+		element.click()
+		time.sleep(3)
+
 
