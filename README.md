@@ -1,65 +1,57 @@
-# NETRYDE TEST SUITE
+# Test Automation Project README
 
-This a Test Suite For Netryde Web Application.It Contains Happy and Negative Path Tests for the Three StakeHolders (Customer, Provider and admin). This Suite Is Designed Following the POM(Page Object Model) Architecture. 
+## Overview
 
-Test Automatinon For NetRyde.com
+   Welcome to the NETFYDE_TEST_SUITE! This project aims to automate testing processes for netryde ride-sharing.
 
-Automation testing tool - Selenium WebDriver API
+## Purpose
 
-Programming language - Python
+    The primary purpose of this project is to:
 
-IDE - VsCode
+        1 Increase testing efficiency by automating repetitive test cases.
+        2 Ensure the reliability and stability of the application by executing automated tests.
+        3 Provide faster feedback to developers by integrating automated testing into the development pipeline.
+        4 Support continuous integration and continuous delivery (CI/CD) processes.
 
-prerequisites
+## Features
+        1, Automated Testing: Execute predefined test cases automatically.
+        2, Customizable Test Suites: Create and configure test suites based on specific requirements.
+        3, Cross-Browser Testing: Run tests across multiple web browsers to ensure compatibility.
+        4, Headless Testing: Perform tests in headless mode for faster execution.
+        5, Parallel Execution: Execute tests in parallel to reduce overall test execution time.
+        6, Reporting: Generate detailed test reports for analysis and debugging.
 
-    * python 3 and above
+## Installation
+    To set up the Test Automation project locally, follow these steps:
 
-    * a virtual enviroment to run the python codes
+    1 Clone Repository:
+        'git clone https://github.com/X-C0DER/NETRYDE_TEST_SUITE.git'
+    2 Install Dependencies:
+        'cd NETFYDE_TEST_SUITE'
+        'pip install -r requirements.txt'
+    3 Configure Environment:
+        Update configuration files (if applicable) to specify the SUT URL, browser settings, test data, etc.
+        Set up necessary drivers (e.g., WebDriver for Selenium tests).
 
-    * selenium Webdriver
+## Usage
+    To run automated tests, execute the following command:
+        'pytest'
+    For specific test suites or modules, use:
+        'pytest CUSTOMER/pages/LoginPage.py'
 
-Geting Started 
+## Configuration
+    Environment Variables: Configure environment variables for sensitive data (e.g., credentials).
+    Test Data: Provide test data in CSV, JSON, or other formats as needed.
+    Drivers: Ensure WebDriver or other necessary drivers are installed and accessible.
+## Contributing
+    Contributions to the Test Automation project are welcome! To contribute:
+        1 Fork the repository.
+        2 Create a new branch (git checkout -b feature/your-feature).
+        3 Commit your changes (git commit -am 'Add new feature').
+        4 Push to the branch (git push origin feature/your-feature).
+        5 Create a new Pull Request.
+## License
+    This project is licensed under the Binary Cosmos License.
 
-    1 clone a repository 
-        git clone https://github.com/X-C0DER/NETRYDE_TEST_SUITE.git
-    2 navigate to a project directory
-        cd NETRYDE_TEST_SUITE 
-        cd E2E_TEST  /  MISC_TEST
-
-Running Tests
-
-    run the tests using "pytest" command
-
-
-Directory Structue
-    
-```
-NETRYDE_TEST_SUITE
-│   README.md
-│   location.json    
-│   admin_data.json    
-|   customer_data.json
-|   provide_data.json
-|
-└───E2E_TEST
-│   │   
-│   │
-│   └───CUSTOMER
-│       │   test_LOGIN.py
-│       │   utils.py
-│       └───pages
-│       │       Homepage.py
-│       │       LoginPage.py
-│       │       utils.py
-│       └───tests
-│       │       test_book.py
-│       │       test_E2E_1.py
-│       │       test_e2e_customer_login_1.py
-│       │       test_e2e_customer_signup.py
-│ 
-└───MISC_TEST
-    │   test_get_price.py
-    │   test_recaptcha.py
-    │   test_SHOW_PASSWORD.py
-
-```
+## Support
+    For help or support, please contact salazaralem@gmail.com / hopemelkamu28@gmail.com.
