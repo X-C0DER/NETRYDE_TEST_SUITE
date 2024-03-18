@@ -1,7 +1,24 @@
 from .utils import *
 
 class LoginPage:
+	"""
+    Class representing the login page functionality.
+
+    Attributes:
+        driver: WebDriver object representing the browser instance.
+        email_input: Locator for the email input field.
+        password_input: Locator for the password input field.
+        continue_button: Locator for the 'Continue' button.
+        form: Locator for the login form.
+        login_button: Locator for the 'Login' button.
+    """
 	def __init__(self,driver):
+		"""
+        Initializes the LoginPage object with a WebDriver instance.
+
+        Args:
+            driver: WebDriver object representing the browser instance.
+        """
 		
 		self.driver=driver
 		self.email_input = (By.ID, "1")
@@ -11,6 +28,13 @@ class LoginPage:
 		self.login_button=(By.CSS_SELECTOR, "button:nth-child(4)")
 
 	def login(self, email, password):
+		"""
+        Method to perform login.
+
+        Args:
+            email: Email address of the user.
+            password: Password of the user.
+        """
 		self.driver.get("https://dev-np.netryde.com/")
 		self.driver.maximize_window()
 		self.driver.find_element(By.ID, "Log inTextArea").click()
