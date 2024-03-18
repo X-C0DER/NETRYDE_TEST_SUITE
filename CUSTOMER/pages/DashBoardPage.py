@@ -1,8 +1,43 @@
-from .utils import *
+from utils import *
 
+"""
+    Class representing the dashboard functionality for booking a trip.
+
+    Attributes:
+        driver: WebDriver object representing the browser instance.
+        point_a: Locator for the pick-up location input field.
+        point_b: Locator for the drop-off location input field.
+        baby_on_board: Locator for the 'Baby On Board' checkbox.
+        add_passenger_number: Locator for the 'Add Passenger' button.
+        decrease_passenger_number: Locator for the 'Decrease Passenger' button.
+        add_carseat: Locator for the 'Add Car Seat' button.
+        decrease_carseat: Locator for the 'Decrease Car Seat' button.
+        flight_number: Locator for the flight number input field.
+        date_input: Locator for the pick-up date input field.
+        time_input: Locator for the pick-up time input field.
+        tip_25: Locator for the 25% tip option.
+        tip_20: Locator for the 20% tip option.
+        tip_15: Locator for the 15% tip option.
+        tip_10: Locator for the 10% tip option.
+        no_tip: Locator for the 'No Tip' option.
+        tip_another_amount: Locator for the 'Other Amount' tip option.
+        add_tip: Locator for the 'Add Tip' button.
+        decrease_tip: Locator for the 'Decrease Tip' button.
+        popular_cars: Locator for the 'Popular Cars' option.
+        luxury_cars: Locator for the 'Luxury Cars' option.
+        comfortable_cars: Locator for the 'Comfortable Cars' option.
+        book_tip_button: Locator for the 'Book Trip' button.
+    """
 class DashBoard:
 	def __init__(self,driver):
+		"""
+        Initializes the Dashboard object with a WebDriver instance.
+
+        Args:
+            driver: WebDriver object representing the browser instance.
+        """
 		self.driver=driver
+		# Define locators for various elements on the dashboard
 		self.point_a=(By.CSS_SELECTOR, ".point-a")
 		self.point_b=(By.CSS_SELECTOR, ".point-b")
 		self.baby_on_board=(By.ID, "babyOnBoard")
@@ -27,38 +62,6 @@ class DashBoard:
 		self.book_tip_button=(By.XPATH, "//div[@id='root']/div/div/div[2]/div[9]/button")
 
 	def multi_click(self,button_element, times):
- revert-2-hope-doc
-	    for _ in range(times):
-	        self.driver.find_element(By.CSS_SELECTOR,button_element).click()
-	        time.sleep(0.5)
-
-
-
-	def book_a_trip(self,
-		point_a,point_b,pick_up_date,pick_up_time,
-		passengers=1,flight_number=0,
-		baby_on_board=0,car_seat=0,
-		car="POPULAR",tip="NO_TIP",tip_amount=0
-		):
-
-
-		WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div:nth-child(1) > .car:nth-child(3) > label")))
-		
-		
-	
-		pick_up_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_a))
-		pick_up_loc.send_keys(point_a)
-		pick_up_loc.send_keys(Keys.ENTER)
-		#time.sleep(3)
-		#self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
-
-		drop_off_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_b))
-		drop_off_loc.send_keys(point_b)
-		#drop_off_loc.send_keys(Keys.ENTER)
-		time.sleep(5)
-		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
-		
-
 		"""
         Method to perform multiple clicks on a specified button.
 
@@ -97,7 +100,6 @@ class DashBoard:
 			WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div:nth-child(1) > .car:nth-child(3) > label")))
 			
 			
-main
 		
 			pick_up_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_a))
 			pick_up_loc.send_keys(point_a)
