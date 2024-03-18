@@ -69,104 +69,103 @@ class DashBoard:
             button_element: Locator for the button element.
             times: Number of times to click the button.
         """
-	for _ in range(times):
-	        self.driver.find_element(By.CSS_SELECTOR,button_element).click()
-time.sleep(0.5)
+		for _ in range(times):
+			self.driver.find_element(By.CSS_SELECTOR,button_element).click()
+			time.sleep(0.5)
 
 
 
-def book_a_trip(self,
-		point_a,point_b,pick_up_date,pick_up_time,
-		passengers=1,flight_number=0,
-		baby_on_board=0,car_seat=0,
-		car="POPULAR",tip="NO_TIP",tip_amount=0
-		):
-		"""
-        Method to book a trip with various options.
-
-        Args:
-            point_a: Pick-up location.
-            point_b: Drop-off location.
-            pick_up_date: Date for pick-up.
-            pick_up_time: Time for pick-up.
-            passengers: Number of passengers (default is 1).
-            flight_number: Flight number (default is 0).
-            baby_on_board: Whether baby is on board (default is 0).
-            car_seat: Number of car seats required (default is 0).
-            car: Type of car (default is "POPULAR").
-            tip: Type of tip (default is "NO_TIP").
-            tip_amount: Amount of tip (default is 0).
-        """
-		
-		WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div:nth-child(1) > .car:nth-child(3) > label")))
-		
-		
-	
-		pick_up_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_a))
-		pick_up_loc.send_keys(point_a)
-		pick_up_loc.send_keys(Keys.ENTER)
-		#time.sleep(3)
-		#self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
-
-		drop_off_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_b))
-		drop_off_loc.send_keys(point_b)
-		#drop_off_loc.send_keys(Keys.ENTER)
-		time.sleep(5)
-		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
-		
-		
-		
-		if (car=="POPULAR"):
-			self.driver.find_element(*self.popular_cars).click() 
-		elif (car=="LUXURY"):
-			self.driver.find_element(*self.luxury_cars).click()  
-		elif (car=="COMFORTABLE"):
-			self.driver.find_element(*self.comfortable_cars).click()
-
-
-		if (passengers==1):
-			pass
-		else:
-			self.multi_click("button:nth-child(4)",passengers-1)
+	def book_a_trip(self,
+			point_a,point_b,pick_up_date,pick_up_time,
+			passengers=1,flight_number=0,
+			baby_on_board=0,car_seat=0,
+			car="POPULAR",tip="NO_TIP",tip_amount=0
+			):
+			"""
+			Method to book a trip with various options.g9
+			Args:
+				point_a: Pick-up location.
+				point_b: Drop-off location.
+				pick_up_date: Date for pick-up.
+				pick_up_time: Time for pick-up.
+				passengers: Number of passengers (default is 1).
+				flight_number: Flight number (default is 0).
+				baby_on_board: Whether baby is on board (default is 0).
+				car_seat: Number of car seats required (default is 0).
+				car: Type of car (default is "POPULAR").
+				tip: Type of tip (default is "NO_TIP").
+				tip_amount: Amount of tip (default is 0).
+			"""
 			
-
-		if (baby_on_board==0):
-			pass
-		else:
-			self.driver.find_element(*self.popular_cars).click()
-			self.driver.find_element(*self.baby_on_board).click()
-			self.multi_click( ".\\_number-picker-container_5f60k_83:nth-child(6) > button:nth-child(4)",car_seat)
-
-
-		if (flight_number==0):
-			pass 
-		else:
-			self.driver.find_element(*self.flight_number).send_keys(flight_number)
-
-
-
+			WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, "div:nth-child(1) > .car:nth-child(3) > label")))
+			
+			
 		
-		
-		self.driver.find_element(*self.date_input).send_keys(pick_up_date)
-		time.sleep(2)
-		self.driver.find_element(*self.time_input).send_keys(pick_up_time)
+			pick_up_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_a))
+			pick_up_loc.send_keys(point_a)
+			pick_up_loc.send_keys(Keys.ENTER)
+			#time.sleep(3)
+			#self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+
+			drop_off_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_b))
+			drop_off_loc.send_keys(point_b)
+			#drop_off_loc.send_keys(Keys.ENTER)
+			time.sleep(5)
+			self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+			
+			
+			
+			if (car=="POPULAR"):
+				self.driver.find_element(*self.popular_cars).click() 
+			elif (car=="LUXURY"):
+				self.driver.find_element(*self.luxury_cars).click()  
+			elif (car=="COMFORTABLE"):
+				self.driver.find_element(*self.comfortable_cars).click()
+
+
+			if (passengers==1):
+				pass
+			else:
+				self.multi_click("button:nth-child(4)",passengers-1)
+				
+
+			if (baby_on_board==0):
+				pass
+			else:
+				self.driver.find_element(*self.popular_cars).click()
+				self.driver.find_element(*self.baby_on_board).click()
+				self.multi_click( ".\\_number-picker-container_5f60k_83:nth-child(6) > button:nth-child(4)",car_seat)
+
+
+			if (flight_number==0):
+				pass 
+			else:
+				self.driver.find_element(*self.flight_number).send_keys(flight_number)
+
+
+
+			
+			
+			self.driver.find_element(*self.date_input).send_keys(pick_up_date)
+			time.sleep(2)
+			self.driver.find_element(*self.time_input).send_keys(pick_up_time)
 
 
 
 
-		if (tip=="NO_TIP"):
-			self.driver.find_element(*self.no_tip).click() 
-		elif (tip=="TWENTY_FIVE"):
-			self.driver.find_element(*self.tip_25).click()  
-		elif (tip == "TWENTY"):
-			self.driver.find_element(*self.tip_20).click()  
-		elif (tip=="FIFTEEN"):
-			self.driver.find_element(*self.tip_15).click()  
-		elif (tip=="TEN"):
-			self.driver.find_element(*self.tip_10).click()  
-		elif (tip=="OTHER_AMOUNT"):
-			self.driver.find_element(*self.tip_another_amount).click()
-			self.multi_click(".\\_number-picker-container_5f60k_83:nth-child(3) > button:nth-child(4)",tip_amount)    
+			if (tip=="NO_TIP"):
+				self.driver.find_element(*self.no_tip).click() 
+			elif (tip=="TWENTY_FIVE"):
+				self.driver.find_element(*self.tip_25).click()  
+			elif (tip == "TWENTY"):
+				self.driver.find_element(*self.tip_20).click()  
+			elif (tip=="FIFTEEN"):
+				self.driver.find_element(*self.tip_15).click()  
+			elif (tip=="TEN"):
+				self.driver.find_element(*self.tip_10).click()  
+			elif (tip=="OTHER_AMOUNT"):
+				self.driver.find_element(*self.tip_another_amount).click()
+				self.multi_click(".\\_number-picker-container_5f60k_83:nth-child(3) > button:nth-child(4)",tip_amount)    
 
 
 
