@@ -1,7 +1,7 @@
 import pytest
 from pages.utils import *
 from pages.LoginPage import LoginPage
-from .TestDataMgr import TestDataManager
+from pages.TestDataMgr import TestDataManager
 
 
 class TestLogin:

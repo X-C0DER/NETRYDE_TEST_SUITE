@@ -1,5 +1,7 @@
 from .utils import * 
+import logging 
 
+logging.basicConfig(level=logging.INFO)
 class HomePage:
 	"""
     Class representing the functionality of the home page.
@@ -26,6 +28,18 @@ class HomePage:
 		self.get_price_button=(By.ID, "Get PriceTextArea")
 		self.book_trip_button=(By.TAG_NAME, "button")
 
+	def choose_location(self,point):
+		suggestion_elements = WebDriverWait(self.driver, 20).until(
+		EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '.suggestion'))
+		)
+
+		for suggestion in suggestion_elements:
+			suggestion_text = suggestion.text
+			if point == suggestion_text:
+				suggestion.click()
+				break 
+
+
 	def get_price(self,point_a,point_b):
 		"""
         Method to retrieve the price for a trip.
@@ -41,18 +55,21 @@ class HomePage:
 		
 		self.driver.find_element(By.CSS_SELECTOR, ".point-a").click()
 		self.driver.find_element(By.CSS_SELECTOR, ".point-a").send_keys(point_a)
-		time.sleep(2)
-		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
+		time.sleep(4)
+		self.choose_location(point_a)
+
 
 		self.driver.find_element(By.CSS_SELECTOR, ".point-b").click()
 		self.driver.find_element(By.CSS_SELECTOR, ".point-b").send_keys(point_b)
+		time.sleep(4)
+		self.choose_location(point_b)
 		time.sleep(5)
-		self.driver.find_element(By.CSS_SELECTOR, ".suggestion:nth-child(1)").click()
-		time.sleep(2)
 		self.driver.find_element(By.ID, "Get PriceTextArea").click()
 		time.sleep(3)
 		element = self.driver.find_element(By.XPATH, "//div[@id='root']/div/div/div/div/div/div[2]/div/div/div/div[2]/button")
 		element.click()
-		time.sleep(3)
+
+		time.sleep(10)
+		
 
 

@@ -31,6 +31,7 @@ class DashBoard:
         book_tip_button: Locator for the 'Book Trip' button.
     """
 	def __init__(self,driver):
+
 		"""
         Initializes the Dashboard object with a WebDriver instance.
 
@@ -38,12 +39,14 @@ class DashBoard:
             driver: WebDriver object representing the browser instance.
         """
 		self.driver=driver
+
 		# Define locators for various elements on the dashboard
 		self.point_a=(By.CSS_SELECTOR, ".point-a")
 		self.point_b=(By.CSS_SELECTOR, ".point-b")
 		self.baby_on_board=(By.ID, "babyOnBoard")
 		self.add_passenger_number=(By.CSS_SELECTOR, "button:nth-child(4)")
 		self.decrease_passenger_number=(By.CSS_SELECTOR, "button:nth-child(2)")
+		self.passengers=(By.CSS_SELECTOR, ".\\_number-picker-container_5f60k_83:nth-child(4) > input")
 		self.add_carseat=(By.CSS_SELECTOR, ".\\_number-picker-container_5f60k_83:nth-child(6) > button:nth-child(4)")
 		self.decrease_carseat=(By.CSS_SELECTOR, ".\\_number-picker-container_5f60k_83:nth-child(6) > button:nth-child(2)")
 		self.flight_number=(By.CSS_SELECTOR, ".\\_number-picker-container_5f60k_83:nth-child(1) > input")
@@ -61,6 +64,9 @@ class DashBoard:
 		self.luxury_cars=(By.CSS_SELECTOR, "div:nth-child(2) > .car:nth-child(3) > label")
 		self.comfortable_cars=(By.CSS_SELECTOR, "div:nth-child(3) > .car:nth-child(3) > label")
 		self.book_tip_button=(By.XPATH, "//div[@id='root']/div/div/div[2]/div[9]/button")
+		self.map_canvas=(By.CSS_SELECTOR,".mapboxgl-canvas")
+		self.clear_point_b=(By.CSS_SELECTOR,".close--btn-b")
+		self.clear_point_a=(By.CSS_SELECTOR,".close--btn-a > path")
 
 	def multi_click(self,button_element, times):
 		"""
@@ -75,8 +81,19 @@ class DashBoard:
 			time.sleep(0.5)
 
 
+	def choose_location(self,point):
+		suggestion_elements = WebDriverWait(self.driver, 20).until(
+		EC.visibility_of_all_elements_located((By.CSS_SELECTOR, '.suggestion'))
+		)
 
-	def book_a_trip(self,
+		for suggestion in suggestion_elements:
+			suggestion_text = suggestion.text
+			if point in suggestion_text:
+				suggestion.click()
+				break 
+
+	def book_a_trip(
+			self,
 			point_a,point_b,pick_up_date,pick_up_time,
 			passengers=1,flight_number=0,
 			baby_on_board=0,car_seat=0,
@@ -97,28 +114,30 @@ class DashBoard:
 				tip: Type of tip (default is "NO_TIP").
 				tip_amount: Amount of tip (default is 0).
 			"""
-			time.sleep(7)
 			
-			WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.popular_cars))	
-			
-		
-			pick_up_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_a))
-			#pick_up_loc.send_keys(point_a)
-			#pick_up_loc.send_keys(Keys.ENTER)
-			
-			#WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".suggestion:nth-child(1)"))).click()
-			
-			#self.driver.find_element(By.CSS_SELECTOR, "").click()
 			
 
-			drop_off_loc = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.point_b))
-			#drop_off_loc.send_keys(point_b)
+			# Wait for the attribute of the map container element to have the expected value
+			#WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(())).click()
 			
-			#WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".suggestion:nth-child(1)"))).click()
+
+
+			#WebDriverWait(self.driver,30).until(EC.element_to_be_clickable(*self.point_a))
+			self.driver.find_element(*self.point_a).send_keys(point_a)
+			time.sleep(3)
+			self.choose_location(point_a)
+			time.sleep(3)
+			self.driver.find_element(*self.point_a).click()
+
+			self.driver.find_element(*self.point_b).click()
+			self.driver.find_element(*self.point_b).send_keys(point_b)
+			time.sleep(5)
+			self.choose_location(point_b)
+			time.sleep(2)
+			self.driver.find_element(*self.point_b).click()
+
 			
-			
-			
-			
+
 			
 			if (car=="POPULAR"):
 				self.driver.find_element(*self.popular_cars).click() 
@@ -131,6 +150,7 @@ class DashBoard:
 			if (passengers==1):
 				pass
 			else:
+				self.driver.find_element(*self.passengers).clear()
 				self.multi_click("button:nth-child(4)",passengers-1)
 				
 
@@ -145,14 +165,17 @@ class DashBoard:
 			if (flight_number==0):
 				pass 
 			else:
+				self.driver.find_element(*self.flight_number).clear()
 				self.driver.find_element(*self.flight_number).send_keys(flight_number)
 
 
 
 			
 			
-			#self.driver.find_element(*self.date_input).send_keys(pick_up_date)
-			time.sleep(2)
+			self.driver.find_element(*self.date_input).clear()
+			self.driver.find_element(*self.date_input).send_keys(pick_up_date)
+			
+			self.driver.find_element(*self.time_input).clear()
 			self.driver.find_element(*self.time_input).send_keys(pick_up_time)
 
 
@@ -170,7 +193,10 @@ class DashBoard:
 				self.driver.find_element(*self.tip_10).click()  
 			elif (tip=="OTHER_AMOUNT"):
 				self.driver.find_element(*self.tip_another_amount).click()
-				self.multi_click(".\\_number-picker-container_5f60k_83:nth-child(3) > button:nth-child(4)",tip_amount)    
+				self.multi_click(".\\_number-picker-container_5f60k_83:nth-child(3) > button:nth-child(4)",tip_amount)   
+
+
+			time.sleep(5) 
 
 
 

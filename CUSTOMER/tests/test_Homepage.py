@@ -1,7 +1,7 @@
 import pytest
 from pages.utils import *
 from pages.Homepage import HomePage
-from .TestDataMgr import TestDataManager
+from pages.TestDataMgr import TestDataManager
 
 
 class TestHomepage:
@@ -15,7 +15,9 @@ class TestHomepage:
         Home=HomePage(browser)
         data=mgr=TestDataManager()
         locs=data.get_location_data("location.json",count=2)
-
-        Home.get_price(locs[0],locs[1])
-        time.sleep(10)
+        print ("test2")
+        Home.get_price("7822 115th Avenue Southeast, Newcastle, Washington 98056, United States",
+            "2700 Washington Highway 109, Ocean City, Washington 98569, United States"
+        )
+        
         assert True
