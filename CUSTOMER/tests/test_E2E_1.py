@@ -111,7 +111,7 @@ class TestE2ECustomerLogin:
         time.sleep(8)
         browser.find_element(By.CSS_SELECTOR, ".\\_booking-status-container_5f60k_426").click()
         time.sleep(5)
-        browser.execute_script("window.scrollTo(0, 230);")
+        browser.execute_script("window.scrollTo(0, 250);")
         assert browser.find_element(By.CSS_SELECTOR, ".\\_booking-status-item_5f60k_437:nth-child(1) > p").text == "Trip Booked"
         
         time.sleep(3)

@@ -18,6 +18,11 @@ class TestDataManager:
         data = self.load_json_file(file_name)
         locations = data["locations"]
         return random.sample(locations, count)
+
+    def get_payment_detail(self,file_name,count=1):
+        data=self.load_json_file(file_name)
+        payments=data["payment_detail"]
+        return random.sample(payments,count)
     
     def get_test_cases_from_file(self,file_name):
         test_cases_file=self.load_json_file(file_name)
@@ -47,9 +52,6 @@ class TestDataManager:
             "drop_off_location": location_data[1],
             "test_cases": test_cases
         }
-
-        
-        #self.save_json_file(all_data, test_file)
 
         return all_data
 

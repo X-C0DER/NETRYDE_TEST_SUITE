@@ -53,7 +53,7 @@ class SignUpPage:
 		self.driver.find_element(*self.password_2).send_keys(password)
 		self.driver.find_element(*self.cont_b_2).click()
 		self.driver.find_element(*self.cont_b_2).click()
-		WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(self.accept_terms)).click()
+		WebDriverWait(self.driver, 15).until(EC.element_to_be_clickable(self.accept_terms)).click()
 		
 		time.sleep(3)
 
