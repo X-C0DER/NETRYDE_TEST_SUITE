@@ -10,8 +10,7 @@
 
         1 Increase testing efficiency by automating repetitive test cases.
         2 Ensure the reliability and stability of the application by executing automated tests.
-        3 Provide faster feedback to developers by integrating automated testing into the development pipeline.
-        4 Support continuous integration and continuous delivery (CI/CD) processes.
+
 
 ## Features
         1, Automated Testing: Execute predefined test cases automatically.
@@ -43,13 +42,7 @@
     Environment Variables: Configure environment variables for sensitive data (e.g., credentials).
     Test Data: Provide test data in CSV, JSON, or other formats as needed.
     Drivers: Ensure WebDriver or other necessary drivers are installed and accessible.
-## Contributing
-    Contributions to the Test Automation project are welcome! To contribute:
-        1 Fork the repository.
-        2 Create a new branch (git checkout -b feature/your-feature).
-        3 Commit your changes (git commit -am 'Add new feature').
-        4 Push to the branch (git push origin feature/your-feature).
-        5 Create a new Pull Request.
+
 ## License
     This project is licensed under the Binary Cosmos License.
 
