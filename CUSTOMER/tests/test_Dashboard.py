@@ -3,7 +3,7 @@ from pages.utils import *
 from pages.DashBoardPage import DashBoard
 from pages.LoginPage import LoginPage
 from pages.TestDataMgr import TestDataManager
-from .misc import *
+from pages.StripeCheckout import StripeCheckout
 
 def load_test_data2():
     TestDataMGR=TestDataManager()        
@@ -67,6 +67,24 @@ class TestDashBoard:
             tip=tip,
             tip_amount=tip_amount
         )
+        '''
+        Stripe=StripeCheckout()
+
+        payment_detail=TestDataManager()
+        card=payment_detail.get_payment_detail("payment_detail.json")
+
+        Stripe.pay_for_booking(card_number=card["card_number"],
+            card_expiry=card["card_expiry_date"],
+            card_cvc=card["card_cvc"],
+            billing_name=card["card_holder_name"]
+        )
+        assert browser.find_element(By.CSS_SELECTOR, ".\\_booking-status-item_5f60k_437:nth-child(1) > p").text == "Trip Booked"
+        
+        time.sleep(3)
+        browser.find_element(By.LINK_TEXT, "Book another trip").click()
+
+        '''
+
 
         assert True
     

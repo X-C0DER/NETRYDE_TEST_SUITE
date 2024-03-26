@@ -1,7 +1,5 @@
 from .utils import * 
-import logging 
 
-logging.basicConfig(level=logging.INFO)
 class HomePage:
 	"""
     Class representing the functionality of the home page.

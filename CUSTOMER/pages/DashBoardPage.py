@@ -1,5 +1,5 @@
 from .utils import *
-
+from DashBoardPage import DashBoard
 
 class DashBoard:
 	"""
@@ -196,7 +196,8 @@ class DashBoard:
 				self.multi_click(".\\_number-picker-container_5f60k_83:nth-child(3) > button:nth-child(4)",tip_amount)   
 
 
-			time.sleep(5) 
+			time.sleep(5)
+		
 
 
 
